@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.agilelife.bo.OrderBoImple;
+import com.agilelife.bo.exceptions.BOException;
 import com.agilelife.dao.IOrderDao;
 import com.agilelife.dto.Order;
 
@@ -27,11 +28,14 @@ public class OrderBOimplTest {
 	}
 
 	@Test
-	public void realizarUnaOrdenDeberiaCrearUnaOrden() throws SQLException {
+	public void realizarUnaOrdenDeberiaCrearUnaOrden() throws SQLException, BOException {
 		OrderBoImple bo = new OrderBoImple();
 		bo.setDao(dao);
 		Order orden = new Order();
 		when(dao.crearOrden(orden)).thenReturn(new Integer(1));
+		boolean resultado = bo.realizarPedido(orden);
+		assertTrue(resultado);
+		verify(dao).crearOrden(orden);
 	}
 
 }
