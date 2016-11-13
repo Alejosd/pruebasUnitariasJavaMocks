@@ -49,5 +49,11 @@ public class OrderBOimplTest {
 		assertFalse(resultado);
 		verify(dao).crearOrden(orden);
 	}
+	
+	@Test(expected=BOException.class	)
+	public void realizarUnaOrdenDeberiaLanzarUnaExcepcion() throws SQLException, BOException {
+		when(dao.crearOrden(orden)).thenThrow(SQLException.class);
+		boolean resultado = bo.realizarPedido(orden);
+	}
 
 }
