@@ -6,12 +6,12 @@ import com.agilelife.dto.Order;
 
 public interface IOrderDao {
 	
-	int crearOrden(Order order) throws SQLException;
+	int crearOrden(Order orden) throws SQLException;
 	
-	Order obtenerOrden(Order order) throws SQLException;
+	Order obtenerOrden(int id) throws SQLException;
 	
-	int actualizarOrden()throws SQLException;
+	int actualizarOrden(Order orden)throws SQLException;
 	
-	int eliminarOrden()throws SQLException;
+	int eliminarOrden(int id)throws SQLException;
 
 }

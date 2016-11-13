@@ -13,19 +13,19 @@ public class OrderDaoImpl implements IOrderDao {
 	}
 
 	@Override
-	public Order obtenerOrden(Order order) throws SQLException {
+	public Order obtenerOrden(int id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int actualizarOrden() throws SQLException {
+	public int actualizarOrden(Order orden) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int eliminarOrden() throws SQLException {
+	public int eliminarOrden(int id) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
