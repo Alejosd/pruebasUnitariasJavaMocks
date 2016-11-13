@@ -22,19 +22,31 @@ public class OrderBOimplTest {
 	@Mock
 	IOrderDao dao;
 	
+	private OrderBoImple bo;
+	
+	private Order orden;
+	
 	@Before
 	public void setup(){
 		MockitoAnnotations.initMocks(this);
+		 bo = new OrderBoImple();
+	     bo.setDao(dao);
+	     orden = new Order();
 	}
 
 	@Test
 	public void realizarUnaOrdenDeberiaCrearUnaOrden() throws SQLException, BOException {
-		OrderBoImple bo = new OrderBoImple();
-		bo.setDao(dao);
-		Order orden = new Order();
 		when(dao.crearOrden(orden)).thenReturn(new Integer(1));
 		boolean resultado = bo.realizarPedido(orden);
 		assertTrue(resultado);
+		verify(dao).crearOrden(orden);
+	}
+
+	@Test
+	public void realizarUnaOrdenDeberiaNoCrearUnaOrden() throws SQLException, BOException {
+		when(dao.crearOrden(orden)).thenReturn(new Integer(0));
+		boolean resultado = bo.realizarPedido(orden);
+		assertFalse(resultado);
 		verify(dao).crearOrden(orden);
 	}
 
