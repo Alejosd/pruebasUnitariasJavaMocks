@@ -10,6 +10,14 @@ public class OrderBoImple implements IOrderBo {
 	
 	private IOrderDao dao;
 
+	public IOrderDao getDao() {
+		return dao;
+	}
+
+	public void setDao(IOrderDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public boolean realizarPedido(Order order) throws BOException {
 		
@@ -49,7 +57,8 @@ public class OrderBoImple implements IOrderBo {
 	@Override
 	public boolean eliminarOrden(int id) throws BOException {
 		
-	try{	int result = dao.eliminarOrden(id);
+	try{	
+		int result = dao.eliminarOrden(id);
 		if(result==0){
 			return false;
 		}
