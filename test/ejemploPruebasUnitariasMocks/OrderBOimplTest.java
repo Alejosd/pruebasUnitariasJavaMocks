@@ -75,5 +75,11 @@ public class OrderBOimplTest {
 		verify(dao).obtenerOrden(123);
 		verify(dao).actualizarOrden(orden);
 	}
+	
+	@Test(expected=BOException.class	)
+	public void cancelarUnaOrdenDeberiaLanzarUnaExcepcion() throws SQLException, BOException {
+		when(dao.obtenerOrden(123)).thenThrow(SQLException.class);
+		boolean resultado = bo.cancelarOrden(123);
+	}
 
 }
