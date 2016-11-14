@@ -36,10 +36,10 @@ public class OrderBOimplTest {
 
 	@Test
 	public void realizarUnaOrdenDeberiaCrearUnaOrden() throws SQLException, BOException {
-		when(dao.crearOrden(orden)).thenReturn(new Integer(1));
+		when(dao.crearOrden(any(Order.class))).thenReturn(new Integer(1));
 		boolean resultado = bo.realizarPedido(orden);
 		assertTrue(resultado);
-		verify(dao).crearOrden(orden);
+		verify(dao,times(1)).crearOrden(orden);
 	}
 
 	@Test
