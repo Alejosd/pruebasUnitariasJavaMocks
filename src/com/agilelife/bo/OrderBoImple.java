@@ -66,7 +66,7 @@ public class OrderBoImple implements IOrderBo {
 	catch (SQLException e) {
 		throw new BOException(e);
 	}
-		return false;
+		return true;
 	}
 
 }

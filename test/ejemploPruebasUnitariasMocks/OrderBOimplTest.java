@@ -88,5 +88,27 @@ public class OrderBOimplTest {
 		when(dao.actualizarOrden(orden)).thenThrow(SQLException.class);
 		bo.cancelarOrden(123);
 	}
+	
+	@Test
+	public void eliminarUnaOrdenDeberiaEliminarUnaOrden() throws SQLException, BOException {
+		when(dao.eliminarOrden(123)).thenReturn(new Integer(1));
+		boolean resultado = bo.eliminarOrden(123);
+		assertTrue(resultado);
+		verify(dao).eliminarOrden(123);
+	}
+
+	@Test
+	public void eliminarUnaOrdenDeberiaNoCrearUnaOrden() throws SQLException, BOException {
+		when(dao.eliminarOrden(123)).thenReturn(new Integer(0));
+		boolean resultado = bo.eliminarOrden(123);
+		assertFalse(resultado);
+		verify(dao).eliminarOrden(123);
+	}
+	
+	@Test(expected=BOException.class	)
+	public void eliminarUnaOrdenDeberiaLanzarUnaExcepcion() throws SQLException, BOException {
+		when(dao.eliminarOrden(123)).thenThrow(SQLException.class);
+		boolean resultado = bo.eliminarOrden(123);
+	}
 
 }
