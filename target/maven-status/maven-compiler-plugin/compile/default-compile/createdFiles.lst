@@ -1,6 +1,0 @@
-com\agilelife\dao\OrderDaoImpl.class
-com\agilelife\bo\exceptions\BOException.class
-com\agilelife\bo\OrderBoImple.class
-com\agilelife\bo\IOrderBo.class
-com\agilelife\dao\IOrderDao.class
-com\agilelife\dto\Order.class
